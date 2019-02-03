@@ -1,10 +1,6 @@
 
 package ee.itcollage.garageapi.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,11 +27,4 @@ public class GreetingController {
         return new Greeting(greeting.getName() +  " POSTEEEEED");
     }
 
-    @AllArgsConstructor
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    public static class Greeting{
-        private String name;
-    }
 }
