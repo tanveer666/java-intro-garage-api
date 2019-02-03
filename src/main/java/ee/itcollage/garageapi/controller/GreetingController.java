@@ -27,4 +27,12 @@ public class GreetingController {
         return new Greeting(greeting.getName() +  " POSTEEEEED");
     }
 
+    //todo
+    // * do you understand what's going on?
+    // * install postman and try to access POST method
+    // * create GET method that returns numbers
+    // * create GET method that returns a list of greetings
+    // * add more info to Greeting object
+    // * create an example of @PathVariable
+    // * test out PUT, DELETE or PATCH method
 }
