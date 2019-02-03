@@ -16,4 +16,6 @@ public class GreetingService {
     public Greeting addPosted(Greeting greeting) {
         return new Greeting(greeting.getName() +  " POSTEEEEED");
     }
+
+    //todo extract your business logic to services
 }
