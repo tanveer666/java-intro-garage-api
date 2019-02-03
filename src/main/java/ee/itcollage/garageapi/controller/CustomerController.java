@@ -21,4 +21,16 @@ public class CustomerController {
     public List<Customer> findAll() {
         return customerService.findAll();
     }
+
+    //todo
+    // * do you understand what's going on?
+    // * connect to database
+    // url: jdbc:h2:~/test;AUTO_SERVER=TRUE
+    // username: test password:test
+    // * create methods GET methods for findById and findByLastName
+    // * what to do if database doesn't have Customer by that id or last name
+    // * create another database entity
+    // * fill that entity with data
+    // * create controller, getmapping and service for that entity
+
 }
