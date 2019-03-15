@@ -1,14 +1,20 @@
 package ee.itcollage.garageapi.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@AllArgsConstructor
-@Getter
-@Setter
-@NoArgsConstructor
 public class Greeting {
     private String name;
+
+    public Greeting() {
+    }
+
+    public Greeting(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
