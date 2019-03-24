@@ -19,7 +19,7 @@ import static java.lang.String.format;
 @RequestMapping("/cars")
 public class CarController {
 
-    private List<Car> cars = Lists.newArrayList(new Car(1L, "Jaguar"));
+    private List<Car> cars = Lists.newArrayList(new Car(1L, "Jaguar"), new Car(2L, "Mercedes"));
 
     @GetMapping
     public List<Car> getCars() {
