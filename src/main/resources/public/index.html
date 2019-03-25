@@ -14,7 +14,7 @@
 <body>
 <script>
     console.log("Java and Javascript are friends");
-    $.getJSON( "/cars", function( data ) {
+    $.getJSON( "http://localhost:7500/cars", function( data ) {
         console.log("data", data);
         var items = [];
         $.each( data, function( index, val ) {
@@ -28,6 +28,6 @@
     });
 </script>
 
-<H1>HELLO JAVA</H1>
+<H2>HELLO JAVA</H2>
 </body>
 </html>
