@@ -2,12 +2,28 @@ package ee.itcollage.garageapi.controller;
 
 public class Greeting {
     private String name;
+    private int age;
 
+    /* Constructors*/
     public Greeting() {
     }
 
     public Greeting(String name) {
         this.name = name;
+    }
+
+    public Greeting(String name, int age) {
+        this(name);
+        this.age = age;
+    }
+
+    /* Methods */
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getName() {
