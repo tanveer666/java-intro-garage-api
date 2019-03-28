@@ -28,9 +28,7 @@ public class CarController {
     @GetMapping("/{id}") //maps all get requests on /cars/int to this
     public Car carGet(@PathVariable int id) {
 
-        List<Car> get = cars.stream()
-                .filter(car -> car.getId().intValue() == id)
-                .collect(Collectors.toList());
+        List<Car> get = validateId(id);
 
         if (get.isEmpty()) {
             return new Car(0L, format("no such car exists by the id of %d", id));
@@ -45,22 +43,30 @@ public class CarController {
         cars.add(newCar);
     }
 
-    @PutMapping
-    public void carPut(@RequestBody Car updateCar) {
-        cars = cars.stream()
-                .filter(car -> car.getId().intValue() != updateCar.getId().intValue())
-                .collect(Collectors.toList());
-
-        cars.add(updateCar);
+    @PutMapping("/{id}")
+    public void carPut(@PathVariable int id,@RequestBody Car aCar) {
+        cars = removeCarFromList(id);
+        aCar.setId( new Long(id) );
+        cars.add(aCar);
     }
 
-    @DeleteMapping
-    public void carDel(@RequestBody Car deleteCar) {
-        cars = cars.stream()
-                .filter(car -> car.getId().intValue() != deleteCar.getId().intValue())
-                .collect(Collectors.toList());
+    @DeleteMapping("/{id}")
+    public void carDel(@PathVariable int id) {
+        cars = removeCarFromList(id);
 
-        //cars.remove(deleteCar);
+    }
+
+
+    private List<Car> validateId(int id) {
+        return cars.stream()
+                .filter(car -> car.getId().intValue() == id)
+                .collect(Collectors.toList());
+    }
+
+    private List<Car> removeCarFromList(int id) {
+        return cars.stream()
+                .filter(car -> car.getId().intValue() != id)
+                .collect(Collectors.toList());
 
     }
 
