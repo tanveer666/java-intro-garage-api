@@ -45,7 +45,7 @@ public class CarController {
 
     @PutMapping("/{id}")
     public void carPut(@PathVariable int id,@RequestBody Car aCar) {
-        cars = removeCarFromList(id);
+        cars = removeCarFromList(id); /* usage of stream could be avoided by simply renaming the existing object with aCars name, but its good practice for me :D*/
         aCar.setId( new Long(id) );
         cars.add(aCar);
     }
@@ -55,6 +55,7 @@ public class CarController {
         cars = removeCarFromList(id);
 
     }
+
 
 
     private List<Car> validateId(int id) {
