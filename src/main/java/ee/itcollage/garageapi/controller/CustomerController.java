@@ -2,11 +2,10 @@ package ee.itcollage.garageapi.controller;
 
 
 import ee.itcollage.garageapi.model.Customer;
+import ee.itcollage.garageapi.repository.CustomerRepository;
 import ee.itcollage.garageapi.server.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,10 +15,42 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CustomerRepository customerrepository;
 
     @GetMapping
     public List<Customer> findAll() {
         return customerService.findAll();
+    }
+
+    @GetMapping("{id}")
+    public Customer findById(@PathVariable Long id) {
+        //return findById(id);
+        Customer ret_val = customerrepository.getOne(id);
+        return ret_val;
+    }
+
+    @GetMapping("lastName/{lastname}")
+    public List<Customer> findByLastName(@PathVariable String lastname) {
+        return customerrepository.findByLastName(lastname);
+    }
+
+    @PostMapping
+    public void addCustomer(@RequestBody Customer aCustomer) {
+        customerrepository.save(aCustomer);
+    }
+
+    @DeleteMapping("{id}")
+    public void removeCustomer(@PathVariable Long id) {
+        customerrepository.deleteById(id);
+    }
+
+    @PutMapping("{id}")
+    public void updateCustomer(@PathVariable Long id, @RequestBody Customer aCustomer) {
+        Customer existingCustomer = customerrepository.getOne(id);
+        existingCustomer.setFirstName(aCustomer.getFirstName());
+        existingCustomer.setLastName(aCustomer.getLastName());
+        customerrepository.save(existingCustomer);
     }
 
     //todo
