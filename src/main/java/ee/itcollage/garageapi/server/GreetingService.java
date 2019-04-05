@@ -14,6 +14,6 @@ public class GreetingService {
     }
 
     public Greeting addPosted(Greeting greeting) {
-        return new Greeting(greeting.getName() +  " POSTEEEEED");
+        return new Greeting(greeting.getName() + " POSTEEEEED");
     }
 }
